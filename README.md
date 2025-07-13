@@ -6,7 +6,7 @@
 
 A comprehensive Model Context Protocol (MCP) server that exposes all Cisco Meraki Dashboard API v1 endpoints as tools for AI assistants. Control your Meraki infrastructure through natural language with Claude, ChatGPT, or any MCP-compatible AI assistant.
 
-## 🚀 Features
+## Features
 
 - **55+ Tools** - Complete coverage of Meraki Dashboard API v1
 - **Natural Language Control** - Manage your network infrastructure through conversation
@@ -18,12 +18,12 @@ A comprehensive Model Context Protocol (MCP) server that exposes all Cisco Merak
 
 ### Supported Operations
 
-✅ **Organization Management** - Networks, devices, licenses, admins  
-✅ **Network Operations** - Clients, traffic analysis, firmware, alerts  
-✅ **Device Control** - Status, LED control, reboots, performance metrics  
-✅ **Analytics & Monitoring** - Bandwidth usage, applications, API usage  
+- **Organization Management** - Networks, devices, licenses, admins  
+- **Network Operations** - Clients, traffic analysis, firmware, alerts  
+- **Device Control** - Status, LED control, reboots, performance metrics  
+- **Analytics & Monitoring** - Bandwidth usage, applications, API usage  
 
-## \ud83d\udce6 Installation
+## Installation
 
 ```bash
 # Clone the repository
@@ -37,7 +37,7 @@ npm install
 npm run build
 ```
 
-## \ud83d\udd27 Configuration
+## Configuration
 
 ### 1. Get Your Meraki API Key
 
@@ -112,7 +112,7 @@ The MCP server supports configurable auto-approval for tools, allowing certain o
 3. `.meraki-mcp-settings.json` in current working directory
 4. `meraki-mcp-settings.json` in the MCP server directory
 
-## \ud83d\ude80 Quick Start
+## Quick Start
 
 ### Running with Claude Desktop
 
@@ -134,7 +134,7 @@ The MCP server supports configurable auto-approval for tools, allowing certain o
 ```
 
 3. Restart Claude Desktop
-4. Look for the \ud83d\udd27 icon to confirm MCP is connected
+4. Look for the wrench icon to confirm MCP is connected
 
 ### Development Mode
 
@@ -226,7 +226,7 @@ npm run inspector
 - Insight tools
 - Sensor tools
 
-## \ud83d\udcac Example Conversations
+## Example Conversations
 
 Ask your AI assistant natural language questions:
 
@@ -262,13 +262,13 @@ Ask your AI assistant natural language questions:
 "Which networks are using the most data?"
 ```
 
-## \ud83d\udcd1 Documentation
+## Documentation
 
 - [Full Capabilities Guide](docs/CAPABILITIES.md) - Complete list of all 55 tools with examples
 - [Optimization Guide](docs/OPTIMIZATION_GUIDE.md) - Performance tuning and best practices
 - [Claude Desktop Setup](CLAUDE_DESKTOP_SETUP.md) - Detailed setup instructions
 
-## \ud83d\udd12 Security
+## Security
 
 - API keys are never logged or exposed in responses
 - All communications use HTTPS
@@ -276,7 +276,7 @@ Ask your AI assistant natural language questions:
 - Input parameters are sanitized and validated
 - Response data is filtered to prevent token overflow
 
-## \ud83e\udd1d Contributing
+## Contributing
 
 Contributions are welcome! Please:
 
@@ -306,17 +306,17 @@ npm test
 npm run inspector
 ```
 
-## \ud83d\udce1 Resources
+## Resources
 
 - [Meraki Dashboard API Documentation](https://developer.cisco.com/meraki/api-v1/)
 - [Model Context Protocol Documentation](https://modelcontextprotocol.io)
 - [Cisco Meraki Community](https://community.meraki.com)
 
-## \ud83d\udccb License
+## License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
-## \ud83d\ude4f Acknowledgments
+## Acknowledgments
 
 - Cisco Meraki for the comprehensive Dashboard API
 - Anthropic for the Model Context Protocol specification
@@ -324,4 +324,4 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ---
 
-Made with \u2764\ufe0f by [dbankscard](https://github.com/dbankscard)
+Made with love by [dbankscard](https://github.com/dbankscard)
