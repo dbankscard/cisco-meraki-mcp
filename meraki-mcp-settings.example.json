@@ -1,0 +1,32 @@
+{
+  "autoApprove": {
+    "enabled": true,
+    "tools": {
+      "all": false,
+      "patterns": [
+        "*_list",
+        "*_get",
+        "organization_*_list",
+        "network_*_get"
+      ],
+      "specific": [
+        "organization_licenses_overview",
+        "network_events_list",
+        "network_traffic_get"
+      ],
+      "exclude": [
+        "network_delete",
+        "organization_admin_create"
+      ]
+    },
+    "readOnlyByDefault": true
+  },
+  "rateLimit": {
+    "requestsPerSecond": 5,
+    "burstSize": 10
+  },
+  "logging": {
+    "level": "info",
+    "logApiCalls": true
+  }
+}
