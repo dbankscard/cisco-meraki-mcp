@@ -12,7 +12,7 @@
 ### 2. Build the Server
 
 ```bash
-cd /Users/dwight/cisco_meraki_mcp
+cd /path/to/cisco-meraki-mcp
 npm install
 npm run build
 ```
@@ -28,7 +28,7 @@ Add this to your Claude Desktop configuration file:
   "mcpServers": {
     "meraki": {
       "command": "node",
-      "args": ["/Users/dwight/cisco_meraki_mcp/build/index.js"],
+      "args": ["/path/to/cisco-meraki-mcp/build/index.js"],
       "env": {
         "MERAKI_API_KEY": "your-40-character-api-key-here"
       }
@@ -45,7 +45,7 @@ Auto-approval allows certain operations to execute without requiring manual conf
 
 Create a settings file in your MCP server directory:
 
-**Location**: `/Users/dwight/cisco_meraki_mcp/meraki-mcp-settings.json`
+**Location**: `/path/to/cisco-meraki-mcp/meraki-mcp-settings.json`
 
 ```json
 {
@@ -87,7 +87,7 @@ You can specify a custom settings file location:
   "mcpServers": {
     "meraki": {
       "command": "node",
-      "args": ["/Users/dwight/cisco_meraki_mcp/build/index.js"],
+      "args": ["/path/to/cisco-meraki-mcp/build/index.js"],
       "env": {
         "MERAKI_API_KEY": "your-40-character-api-key-here",
         "MERAKI_MCP_SETTINGS_PATH": "/path/to/your/custom-settings.json"
