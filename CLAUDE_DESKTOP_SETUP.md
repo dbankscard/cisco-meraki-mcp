@@ -37,18 +37,94 @@ Add this to your Claude Desktop configuration file:
 }
 ```
 
-### 3a. Optional: Configure Auto-Approval (Recommended)
+### 3a. Configure Auto-Approval (Highly Recommended)
 
-To enable auto-approval for read-only operations, create a settings file:
+Auto-approval allows certain operations to execute without requiring manual confirmation, significantly improving your workflow while maintaining safety.
 
-**Create**: `/Users/dwight/cisco_meraki_mcp/meraki-mcp-settings.json`
+#### Method 1: Using the MCP Server's Settings File
+
+Create a settings file in your MCP server directory:
+
+**Location**: `/Users/dwight/cisco_meraki_mcp/meraki-mcp-settings.json`
 
 ```json
 {
   "autoApprove": {
     "enabled": true,
     "tools": {
-      "patterns": ["*_list", "*_get", "*_overview", "*_statuses"],
+      "all": false,              // Never auto-approve all tools
+      "patterns": [              // Auto-approve tools matching these patterns
+        "*_list",                // All list operations
+        "*_get",                 // All get operations
+        "*_overview",            // License overviews, status overviews
+        "*_statuses",            // Device statuses, uplink statuses
+        "*_history",             // Historical data queries
+        "*_usage",               // Usage statistics
+        "organization_traffic_analysis",  // Traffic analysis
+        "network_traffic_get",            // Network traffic data
+        "network_events_list"             // Event logs
+      ],
+      "specific": [              // Additional specific tools to auto-approve
+        "organization_api_usage",
+        "organization_config_changes"
+      ],
+      "exclude": [               // Never auto-approve these (overrides patterns)
+        "device_reboot",         // Always require confirmation for reboots
+        "network_delete"         // Always require confirmation for deletions
+      ]
+    },
+    "readOnlyByDefault": true    // Auto-approve all read-only operations
+  }
+}
+```
+
+#### Method 2: Environment Variable (Alternative Location)
+
+You can specify a custom settings file location:
+
+```json
+{
+  "mcpServers": {
+    "meraki": {
+      "command": "node",
+      "args": ["/Users/dwight/cisco_meraki_mcp/build/index.js"],
+      "env": {
+        "MERAKI_API_KEY": "your-40-character-api-key-here",
+        "MERAKI_MCP_SETTINGS_PATH": "/path/to/your/custom-settings.json"
+      }
+    }
+  }
+}
+```
+
+#### Understanding Auto-Approval Options
+
+**Safe to Auto-Approve** (Read-Only Operations):
+- `*_list` - Lists organizations, networks, devices, clients
+- `*_get` - Gets details of specific resources
+- `*_overview` - License overviews, device overviews
+- `*_statuses` - Current status information
+- `*_history` - Historical data (bandwidth, availability)
+- `organization_traffic_analysis` - Traffic analytics
+- `network_events_list` - Event logs
+
+**Require Approval** (Write Operations):
+- `*_create` - Creating new resources
+- `*_update` - Modifying configurations
+- `*_delete` - Removing resources
+- `*_claim` - Claiming devices or licenses
+- `device_reboot` - Rebooting devices
+- `*_blink_leds` - Physical device actions
+
+#### Example Configurations
+
+**Conservative (Recommended for Production)**:
+```json
+{
+  "autoApprove": {
+    "enabled": true,
+    "tools": {
+      "patterns": ["*_list", "*_get"],
       "exclude": []
     },
     "readOnlyByDefault": true
@@ -56,10 +132,53 @@ To enable auto-approval for read-only operations, create a settings file:
 }
 ```
 
+**Balanced (Recommended for Development)**:
+```json
+{
+  "autoApprove": {
+    "enabled": true,
+    "tools": {
+      "patterns": [
+        "*_list", "*_get", "*_overview", 
+        "*_statuses", "*_history", "*_usage"
+      ],
+      "specific": [
+        "organization_traffic_analysis",
+        "network_events_list"
+      ],
+      "exclude": []
+    },
+    "readOnlyByDefault": true
+  }
+}
+```
+
+**Advanced (For Power Users)**:
+```json
+{
+  "autoApprove": {
+    "enabled": true,
+    "tools": {
+      "patterns": ["*"],           // Auto-approve everything matching...
+      "exclude": [                 // ...except these dangerous operations
+        "*_delete",
+        "*_create",
+        "device_reboot",
+        "device_remove",
+        "network_firmware_upgrades_update",
+        "organization_admin_create"
+      ]
+    },
+    "readOnlyByDefault": false    // We're using patterns instead
+  }
+}
+```
+
 This configuration will:
-- Auto-approve all read-only operations (list, get, overview, status checks)
-- Require approval for write operations (create, update, delete, claim)
-- Improve workflow efficiency while maintaining safety
+- Auto-approve safe read-only operations for faster workflows
+- Always require approval for potentially destructive operations
+- Maintain security while improving user experience
+- Allow customization based on your needs and risk tolerance
 
 ### 4. Restart Claude Desktop
 

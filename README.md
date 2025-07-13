@@ -105,6 +105,8 @@ The MCP server supports configurable auto-approval for tools, allowing certain o
 - **tools.exclude**: Array of tool names to never auto-approve
 - **readOnlyByDefault**: Automatically approve read-only operations (get, list, show, etc.)
 
+**For detailed auto-approval setup instructions and example configurations, see [CLAUDE_DESKTOP_SETUP.md](CLAUDE_DESKTOP_SETUP.md#3a-configure-auto-approval-highly-recommended)**
+
 #### Settings File Locations (in order of precedence)
 
 1. Path specified in `MERAKI_MCP_SETTINGS_PATH` environment variable
