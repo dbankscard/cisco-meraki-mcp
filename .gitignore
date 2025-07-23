@@ -1,0 +1,71 @@
+# Dependencies
+node_modules/
+
+# Build output
+build/
+dist/
+
+# Environment files
+.env
+.env.local
+.env.*.local
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+.DS_Store
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Testing
+coverage/
+.nyc_output/
+
+# Temporary files
+*.tmp
+*.temp
+.cache/
+
+# MCP specific
+.mcp/
+
+# Test files in root
+/test-*.js
+/verify-*.js
+/*-demo.js
+/run-*.sh
+/quick-test.js
+
+# Configuration files (keep examples)
+# (meraki-mcp-settings.json is handled below)
+
+# Temporary reports and analysis
+*-report.md
+*-simulation.md
+*-impact.md
+*-SUMMARY.md
+*-ANALYSIS.md
+*_REPORT.md
+*_TEST_REPORT.md
+*_ANALYSIS.md
+ENHANCEMENTS.md
+BUG_FIXES.md
+MERAKI_API_IMPLEMENTATION_PLAN.md
+COMPREHENSIVE_TEST_REPORT.md
+ENHANCEMENT_TEST_REPORT.md
+PARAMETER_CONSTRAINT_ANALYSIS.md
+TEST_REPORT.md
+
+# Claude AI files
+.claude/
+
+# Local settings
+meraki-mcp-settings.json
+.meraki-mcp-settings.json
